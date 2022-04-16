@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Aula6</string>
+    <string name="calculator">Calculadora</string>
+    <string name="history">Histórico</string>
+    <string name="drawer_open">Aberto</string>
+    <string name="drawer_closed">Fechado</string>
+</resources>
