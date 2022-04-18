@@ -2,6 +2,8 @@ package com.github.mstavares.cm.aula6
 
 import android.media.VolumeShaper
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +12,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.mstavares.cm.aula6.databinding.FragmentCalculatorBinding
 import com.github.mstavares.cm.aula6.databinding.FragmentHistoryBinding
 
-private const val ARG_OPERATIONS = ""
+var ARG_OPERATIONS = ""
 
 class HistoryFragment : Fragment() {
 
-    private var operations: String? = null
+    private var operations = ArrayList<Parcelable>()
     private lateinit var binding: FragmentHistoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            operations = it.getString(ARG_OPERATIONS)
+            operations = it.getParcelableArrayList(ARG_OPERATIONS)!!
         }
     }
 
@@ -33,12 +35,11 @@ class HistoryFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        //message?.let { binding.tvMesssage.text = it }
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(operations: ArrayList<VolumeShaper.Operation>) =
+        fun newInstance(operations: ArrayList<OperationUi>) =
             HistoryFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(ARG_OPERATIONS, operations)

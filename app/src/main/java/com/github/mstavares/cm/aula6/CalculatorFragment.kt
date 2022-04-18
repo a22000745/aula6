@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mstavares.cm.aula6.databinding.FragmentCalculatorBinding
 import net.objecthunter.exp4j.ExpressionBuilder
+import java.time.*
+import java.time.format.DateTimeFormatter
 
 class CalculatorFragment : Fragment() {
 
     private lateinit var binding: FragmentCalculatorBinding
-    private val operations = mutableListOf<String>()
+    private val operations = mutableListOf<OperationUi>()
     private val adapter = HistoryAdapter(::onOperationsClick)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.calculator)
@@ -56,12 +58,12 @@ class CalculatorFragment : Fragment() {
 
     private fun onClickEquals(){
         val textVisorData = binding.textVisor.text.toString()
-        var resultado = textVisorData
         val expression = ExpressionBuilder(textVisorData).build()
         val result = expression.evaluate().toString()
-        resultado += "=${result}"
-        operations.add(resultado)
+        var conta = OperationUi(textVisorData,result)
+        operations.add(conta)
         adapter.updateItems(operations)
+
         binding.textVisor.text = result
     }
     private fun onOperationsClick(operation:String){
