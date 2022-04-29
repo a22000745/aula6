@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     private fun onClickNavigationItem(item: MenuItem): Boolean{
         when(item.itemId) {
             R.id.nav_calculator -> NavigationManager.goToCalculatorFragment(supportFragmentManager)
-            R.id.nav_history -> NavigationManager.goToHistoryFragment(supportFragmentManager, "Nuno Capela")
+            R.id.nav_history -> NavigationManager.goToHistoryFragment(supportFragmentManager, HistoryFragment.newInstance())
         }
         binding.drawer.closeDrawer(GravityCompat.START)
         return true

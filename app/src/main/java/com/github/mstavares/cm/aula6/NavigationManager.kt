@@ -17,7 +17,7 @@ object NavigationManager {
     }
 
     fun goToHistoryFragment(fm: FragmentManager, message: String) {
-        placeFragment(fm, HistoryFragment())
+        placeFragment(fm, HistoryFragment().newInstance())
     }
 
 }

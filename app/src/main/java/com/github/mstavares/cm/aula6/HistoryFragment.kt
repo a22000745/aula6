@@ -35,6 +35,8 @@ class HistoryFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        viewModel.getHistory({ history
+        })
     }
 
     companion object {
