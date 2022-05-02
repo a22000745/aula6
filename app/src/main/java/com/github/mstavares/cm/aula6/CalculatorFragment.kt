@@ -27,13 +27,14 @@ class CalculatorFragment : Fragment() {
         binding = FragmentCalculatorBinding.bind(view)
         return binding.root
     }
-    override fun onCreateView(): LinearLayout{
+    override fun onCreateView(): View? {
         val view = inflater.inflate(
             R.layout.fragment_calculator, container, false
         )
         binding = FragmentCalculatorBinding.bind(view)
         viewModel = ViewModelProvider(this).get(CalculatorViewModel::class.java)
         binding.textVisor.text = viewModel.getDisplayValue()
+
         return binding.root
     }
     override fun onStart() {
